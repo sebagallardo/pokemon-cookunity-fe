@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import AppBar from '@/components/AppBar/AppBar';
 import PokemonList from '@/pages/PokemonList';
-import PokemonCard from '@/pages/PokemonCard';
+import PokemonBattle from '@/pages/PokemonBattle';
+import AppBar from '@/components/AppBar';
 
 const Routing = () => {
   return (
@@ -10,7 +10,7 @@ const Routing = () => {
       <AppBar />
       <Routes>
         <Route path="/" element={<PokemonList />} />
-        <Route path="/card/:id" element={<PokemonCard />} />
+        <Route path="/card/:id" element={<PokemonBattle />} />
       </Routes>
     </>
   );

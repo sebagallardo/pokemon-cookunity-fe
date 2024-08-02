@@ -7,8 +7,6 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 
@@ -25,19 +23,21 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth={false} sx={{ padding: 0, margin: 0 }}>
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Pokemon Cards
-          </Typography>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{
+                mr: 2,
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                color: 'white',
+                textDecoration: 'none',
+              }}
+            >
+              Pokemon Cards
+            </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1, display: 'flex' }}></Box>
 
           <Box sx={{ flexGrow: 0 }}>
