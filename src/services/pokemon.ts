@@ -1,5 +1,11 @@
 import { useQuery } from 'react-query';
 
+export enum PokemonRarity {
+  COMMON = 'common',
+  UNCOMMON = 'uncommon',
+  RARE = 'rare',
+}
+
 export interface Pokemon {
   id: string;
   name: string;
@@ -7,6 +13,7 @@ export interface Pokemon {
   power: number;
   picture: string;
   type: string;
+  rarity: PokemonRarity;
 }
 
 export interface SimulationResult {

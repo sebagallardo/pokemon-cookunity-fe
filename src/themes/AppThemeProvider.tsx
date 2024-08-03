@@ -1,5 +1,4 @@
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
-import { PaletteMode } from '@mui/material';
 import React from 'react';
 
 type Props = {

@@ -13,10 +13,13 @@ import {
   Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { Pokemon } from '@/services/pokemon';
+import { Pokemon, PokemonRarity } from '@/services/pokemon';
 import BlurOnIcon from '@mui/icons-material/BlurOn';
 import AdjustIcon from '@mui/icons-material/Adjust';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import StarRateIcon from '@mui/icons-material/StarRate';
+import CircleIcon from '@mui/icons-material/Circle';
+import PixIcon from '@mui/icons-material/Pix';
 
 interface PokemonCardProps {
   pokemon: Pokemon;
@@ -31,7 +34,7 @@ const PokemonCardBase = ({ pokemon, disabled }: PokemonCardProps) => {
           titleTypographyProps={{ variant: 'h3' }}
           title={pokemon.name}
           action={
-            <Typography sx={{ mt: '4px', display: 'flex' }} variant="h3">
+            <Typography sx={{ mt: '4px', display: 'flex', mr: '5px' }} variant="h3">
               <FavoriteBorderIcon color="error" /> {pokemon.hp}
             </Typography>
           }
@@ -73,6 +76,9 @@ const PokemonCardBase = ({ pokemon, disabled }: PokemonCardProps) => {
               </ListItemButton>
             </ListItem>
           </List>
+          {pokemon.rarity === PokemonRarity.COMMON && <CircleIcon sx={{ ml: '90%', fontSize: '12px' }} />}
+          {pokemon.rarity === PokemonRarity.UNCOMMON && <PixIcon sx={{ ml: '90%', fontSize: '15px' }} />}
+          {pokemon.rarity === PokemonRarity.RARE && <StarRateIcon sx={{ ml: '90%', fontSize: '20px' }} />}
         </CardContent>
       </CardActionArea>
     </Card>

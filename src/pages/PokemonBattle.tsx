@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import PokemonCard from '@/components/PokemonCard';
 import { Pokemon, useGetAllPokemonQuery, useGetPokemonQuery, useSimulateBattleQuery } from '@/services/pokemon';
 import {
@@ -14,9 +15,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const PokemonBattle = () => {
   const { id } = useParams() as { id: string };
@@ -52,34 +51,40 @@ const PokemonBattle = () => {
     <>
       <Grid container p={4}>
         <Grid item lg={5} md={5} sm={12}>
-          {pokemon && <PokemonCard pokemon={pokemon} disabled />}
+          {pokemon && (
+            <Box m={5}>
+              <PokemonCard pokemon={pokemon} disabled />
+            </Box>
+          )}
         </Grid>
         <Grid item lg={2} md={2} sm={12} alignContent={'center'} textAlign={'center'}>
           <Chip label="VS" color="warning" variant="filled" size="medium" sx={{ fontSize: '20px' }} />
         </Grid>
         <Grid item lg={5} md={5} sm={12}>
-          {selectedPokemon ? (
-            <PokemonCard pokemon={selectedPokemon} disabled />
-          ) : (
-            <Autocomplete
-              id="select-pokemon"
-              options={allPokemon || []}
-              getOptionLabel={(option) => option.name}
-              value={selectedPokemon}
-              onChange={(e, value) => {
-                setSelectedPokemon(value ?? undefined);
-              }}
-              sx={{ backgroundColor: 'white', width: '100%' }}
-              renderInput={(params) => <TextField {...params} label="Select a Pokemon" />}
-            />
-          )}
+          <Box m={5}>
+            {selectedPokemon ? (
+              <PokemonCard pokemon={selectedPokemon} disabled />
+            ) : (
+              <Autocomplete
+                id="select-pokemon"
+                options={allPokemon || []}
+                getOptionLabel={(option) => option.name}
+                value={selectedPokemon}
+                onChange={(e, value) => {
+                  setSelectedPokemon(value ?? undefined);
+                }}
+                sx={{ backgroundColor: 'white', width: '100%' }}
+                renderInput={(params) => <TextField {...params} label="Select a Pokemon" />}
+              />
+            )}
+          </Box>
         </Grid>
-        <Grid item lg={12} mt={4} display={'flex'} justifyContent={'center'}>
+        <Grid item lg={12} display={'flex'} alignItems={'center'} flexDirection={'column'}>
           {!displayResults && (
             <Button
               sx={{ m: 1, width: '10%', fontWeight: 'bold' }}
               variant="contained"
-              color="error"
+              color="primary"
               onClick={handleSimulation}
               disabled={!selectedPokemon}
             >
@@ -87,9 +92,9 @@ const PokemonBattle = () => {
             </Button>
           )}
           <Button
-            sx={{ m: 1 }}
+            sx={{ m: 1, width: '10%' }}
             variant="outlined"
-            color="warning"
+            color="error"
             onClick={() => {
               setSelectedPokemon(undefined);
               setDisplayResults(false);
@@ -100,7 +105,7 @@ const PokemonBattle = () => {
           </Button>
         </Grid>
       </Grid>
-      <Grid container p={4} justifyContent={'center'}>
+      <Grid container p={2} pt={0} justifyContent={'center'}>
         {displayResults && (
           <>
             {battleLoading && <CircularProgress />}
