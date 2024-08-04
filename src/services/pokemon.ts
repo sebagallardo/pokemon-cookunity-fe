@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query';
+import { getUser } from './user';
 
 export enum PokemonRarity {
   COMMON = 'common',
@@ -31,7 +32,12 @@ export interface AnalysisResult {
 
 // Get a pokemon
 const getPokemon = async (id: string): Promise<Pokemon> => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/pokemon/${id}`);
+  const user = getUser();
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/pokemon/${id}`, {
+    headers: {
+      Authorization: `Bearer ${user?.accessToken}`,
+    },
+  });
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
@@ -41,7 +47,12 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
 
 // Get all pokemon
 const getAllPokemon = async (): Promise<Pokemon[]> => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/pokemon`);
+  const user = getUser();
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/pokemon`, {
+    headers: {
+      Authorization: `Bearer ${user?.accessToken}`,
+    },
+  });
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
@@ -51,7 +62,12 @@ const getAllPokemon = async (): Promise<Pokemon[]> => {
 
 // Simulate a battle
 const simulateBattle = async (attackerId: string, defenderId: string): Promise<SimulationResult> => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/pokemon/simulation/${attackerId}/${defenderId}`);
+  const user = getUser();
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/pokemon/simulation/${attackerId}/${defenderId}`, {
+    headers: {
+      Authorization: `Bearer ${user?.accessToken}`,
+    },
+  });
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
@@ -61,7 +77,12 @@ const simulateBattle = async (attackerId: string, defenderId: string): Promise<S
 
 // Analyze Pokemon
 const analyzePokemon = async (id: string): Promise<AnalysisResult> => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/pokemon/analyze/${id}`);
+  const user = getUser();
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/pokemon/analyze/${id}`, {
+    headers: {
+      Authorization: `Bearer ${user?.accessToken}`,
+    },
+  });
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }

@@ -3,16 +3,19 @@ import { CssBaseline } from '@mui/material';
 import Routing from './routes/Routing';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { SnackbarProvider } from 'notistack';
 
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <CssBaseline />
-        <Routing />
-      </BrowserRouter>
+      <SnackbarProvider>
+        <BrowserRouter>
+          <CssBaseline />
+          <Routing />
+        </BrowserRouter>
+      </SnackbarProvider>
     </QueryClientProvider>
   );
 };
