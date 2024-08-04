@@ -1,28 +1,13 @@
 {
   "name": "vite-mui-ts",
   "version": "1.0.0",
-  "description": "TypeScript + React + Redux + MUI + RRD + ESLint + Prettier => Boilerplate",
+  "description": "Pokemon Cards",
   "license": "MIT",
-  "author": "emrecil <info.emrecil@gmail.com>",
-  "keywords": [
-    "react",
-    "boilerplate",
-    "typescript",
-    "starter",
-    "vite",
-    "redux",
-    "material-ui",
-    "rrd",
-    "prettier"
-  ],
+  "author": "sebagallardo <gallaseba@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/emre-cil/vite-mui-ts.git"
+    "url": "https://github.com/sebagallardo/pokemon-cookunity-fe"
   },
-  "bugs": {
-    "url": "https://github.com/emre-cil/vite-mui-ts/issues"
-  },
-  "homepage": "https://github.com/emre-cil/vite-mui-ts#readme",
   "scripts": {
     "dev": "vite",
     "start": "vite --open",
